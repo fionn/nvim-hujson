@@ -27,6 +27,11 @@ vim.api.nvim_create_autocmd("BufWritePre", {
             local view = vim.fn.winsaveview()
             vim.cmd("silent keepjumps normal! gggqG")
             vim.fn.winrestview(view)
+            if vim.v.shell_error ~= 0 then
+                vim.cmd("silent undo")
+                vim.notify(vim.bo.formatprg .. " exited with status "
+                    .. vim.v.shell_error, vim.log.levels.ERROR)
+            end
         end
     end
 })
