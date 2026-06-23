@@ -1,8 +1,6 @@
-if vim.b.did_ftplugin_hujson then
+if vim.b.did_ftplugin then
     return
 end
-
-vim.b.did_ftplugin_hujson = true
 
 -- Inherit most settings from jsonc.
 vim.cmd("runtime! ftplugin/jsonc.vim")
@@ -35,3 +33,5 @@ vim.api.nvim_create_autocmd("BufWritePre", {
         end
     end
 })
+
+vim.b.did_ftplugin = true
