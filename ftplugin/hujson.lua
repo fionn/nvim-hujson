@@ -34,4 +34,9 @@ vim.api.nvim_create_autocmd("BufWritePre", {
     end
 })
 
+vim.b.undo_ftplugin = (vim.b.undo_ftplugin or "")
+    .. "\n setl expandtab<"
+    .. "\n setl formatprg<"
+    .. "\n autocmd! HuJSONFormat BufWritePre"
+
 vim.b.did_ftplugin = true
